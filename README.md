@@ -27,21 +27,22 @@ Things you may want to cover:
 ## users テーブル
 | Column | Type | Options     |
 |--------|------|-------------|
-|email|string|null: false     |
+|email|string|null: false,unique: true  |
 |pass |string|null: false     |
 |message_id |integer|null.false,foreign_key: true |
 |group_id |integer|null.false,foreign_key: true |
 
 ### Association
 - has_many:message
-- has_many:group_id
+- has_many:group
+- has_many:group, through: groups_users 
 
 
 ## messages テーブル
 | Column | Type | Options     |
 |--------|------|-------------|
-|body|text|null: false     |
-|image |string|null: false     |
+|body|text|    |
+|image |string|               |
 |user_id |integer|null.false,foreign_key: true |
 |group_id |integer|null.false,foreign_key: true |
 
@@ -50,10 +51,23 @@ Things you may want to cover:
 - belongs_to:group
 
 
+## groups テーブル
+| Column | Type | Options     |
+|--------|------|-------------|
+|group_name |string|null.false, unique: true |
+|user_id |integer|null.false,foreign_key: true |
+
+### Association
+- has_many :groups_users
+- has_many :users, through: groups_users
+- has_many :messages
+
+
 ## groups_users テーブル
 | Column | Type | Options     |
 |--------|------|-------------|
 |user_id |integer|null.false,foreign_key: true |
+|group_id |integer|null.false,foreign_key: true |
 
 ### Association
 - belongs_to:user
