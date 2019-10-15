@@ -27,10 +27,9 @@ Things you may want to cover:
 ## users テーブル
 | Column | Type | Options     |
 |--------|------|-------------|
+|name|string|null: false,unique: true  |
 |email|string|null: false,unique: true  |
 |pass |string|null: false     |
-|message_id |integer|null.false,foreign_key: true |
-|group_id |integer|null.false,foreign_key: true |
 
 ### Association
 - has_many:messages
