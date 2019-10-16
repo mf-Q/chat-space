@@ -7,16 +7,16 @@
         %p.side-header__box__user-name seo
         %ul.side-header__box__menu
           %li.side-header__box__menu__new-group
-            %a{href:"/#"}
-              %i.fa.fa-edit
+          = link_to " "
+          %i.fa.fa-edit
           %li.side-header__box__menu__edit-user
-            %a{href:"/#"}
-              %i.fa.fa-cog
+          = link_to " "
+          %i.fa.fa-cog
     .groups
-      %a{href:"/#"}
-        .group
-          %p.group__group-name sample
-          %p.group__latest-message Good bye world
+    = link_to "#"
+    .group
+    %p.group__group-name sample
+    %p.group__latest-message Good bye world
   .chat-main
     .main-header
       .main-header__left-box
@@ -25,8 +25,8 @@
         %ul.main-header__left-box__member-list
           Member：
           %li.main-header__left-box__member-list__member seo
-      %a{:href => "/#"}
-        .main-header__edit-btn Edit
+          = link_to " "
+      .main-header__edit-btn Edit
     .messages
       .message{data:{message_id:{}}}
         .message__upper-info
