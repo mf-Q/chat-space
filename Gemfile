@@ -62,3 +62,8 @@ gem 'erb2haml'
 gem 'font-awesome-rails'
 
 gem 'devise'
+
+# 画像送信用のgem（あくまで画像アップロードのみのgem）
+gem 'carrierwave'
+# carrierwaveを入れる時に導入するgem（画像のリサイズなどのためです）
+gem 'mini_magick'
