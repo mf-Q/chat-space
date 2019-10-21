@@ -3,6 +3,7 @@ $(function(){
   e.preventDefault();
    let formData = new FormData(this);
    let url = $(this).attr('action');
+   console.log(this);
    $.ajax({
      url: url,
      type: "POST",
@@ -11,6 +12,12 @@ $(function(){
      processData: false,
      contentType: false
    })
+  .done(function(message){
+    console.log(message);  
+  })
+  .fail(function(){
+
+  })
  })
 });
 
