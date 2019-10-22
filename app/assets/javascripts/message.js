@@ -20,7 +20,7 @@ $(function(){
   e.preventDefault();
    let formData = new FormData(this);
    let url = $(this).attr('action');
-   console.log(this);
+   
    $.ajax({
      url: url,
      type: "POST",
@@ -32,7 +32,7 @@ $(function(){
   .done(function(message){
     let html = buildMessage(message);
     $('.messages').append(html)
-    $('#message_content').val('')
+    $('#message_content')[0].reset();
     $('.submit-btn').removeAttr('disabled');
     $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight},300);
   })
