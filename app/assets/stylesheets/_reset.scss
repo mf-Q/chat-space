@@ -54,6 +54,8 @@ table {
 fieldset,
 img {
 	border:0;
+	display: block;
+	margin-bottom: 20px;
 }
 /*
 	TODO think about hanlding inheritence differently, maybe letting IE6 fail a bit...

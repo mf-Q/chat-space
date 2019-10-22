@@ -1,6 +1,7 @@
 $(function(){
 
   function buildMessage(message){
+    image = message.image.url ? `<img src=${message.image.url}>` : "";
     let html = `<div class="message__upper-info__talker">
                 ${message.user_name}
                 </div>
@@ -9,7 +10,9 @@ $(function(){
                 </div>
                 <p class="message__text">
                 ${message.content}
-                </p>`
+                </p>
+                ${image}`
+                
     return html;
   }
 
@@ -30,12 +33,11 @@ $(function(){
     let html = buildMessage(message);
     $('.messages').append(html)
     $('#message_content').val('')
-    $('#.submit-btn').removeAttr('disabled');
+    $('.submit-btn').removeAttr('disabled');
+    $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight},300);
   })
   .fail(function(){
     alert('エラー');
-    
-
   })
  })
 });
