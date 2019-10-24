@@ -4,7 +4,14 @@ def edit
 end
 
 def index
-  @users = User.where('name LIKE(?)',  "%#{params[:keyword]}%")
+  if params[:group_id].present?
+    @group = Group.find(params[:group_id])
+    @ids = @group.users.ids
+    @users = User.where.not(id: @ids).where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", "#{current_user.id}")
+    # ↑カレントゆーざーアイディーだけでなくぜんぶノットの対象にする
+  else
+    @users = User.where('(name LIKE(?)) and (id != ?)', "%#{params[:keyword]}%", "#{current_user.id}")
+  end
   respond_to do |format|
     format.html
     format.json
@@ -24,5 +31,10 @@ private
 def user_params
   params.require(:user).permit(:name, :email)
 end
+
+# def xxx
+# あじゃっくすでわたってきた配列にカレントユーザーIDをいれて、あたらに配列を再生成する
+# その再生性した配列をノットで省く
+# end
 
 end
