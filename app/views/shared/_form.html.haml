@@ -1,9 +1,8 @@
-.form
-  .new_message
-  = form_for [@group, @message] do |f|
-    = f.text_field :content, class: 'input-box__text', placeholder:"type a message"
-    = f.label :image, {for: "upload-icon"} do 
-      .input-box__text__image
-        = fa_icon 'image'
-        = f.file_field :image, class:'input-box__text__image__file', id: "upload-icon"
-    = f.submit 'Send', class:'submit-btn'
+.new_message
+= form_for [@group, @message] do |f|
+  = f.text_field :content, class: 'input-box__text', placeholder:"type a message"
+  = f.label :image, {for: "upload-icon"} do 
+    .input-box__text__image
+      = fa_icon 'image'
+      = f.file_field :image, class:'input-box__text__image__file', id: "upload-icon"
+  = f.submit 'Send', class:'submit-btn'
