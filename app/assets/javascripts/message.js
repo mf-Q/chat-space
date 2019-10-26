@@ -18,8 +18,6 @@ $(function(){
     return html;
   }
 
-
-
  $('#new_message').on('submit', function(e){
   e.preventDefault();
    let formData = new FormData(this);
@@ -49,6 +47,7 @@ $(function(){
     if (window.location.href.match(/\/groups\/\d+\/messages/)){       //グループメッセージのページだけで自動更新させる
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
       let last_message_id = $('.auto:last').data("message-id");
+   
     $.ajax({
       //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
       url: "api/messages",
@@ -60,19 +59,22 @@ $(function(){
     })
 
     .done(function(messages) {
+      if(messages.length !== 0 ){
       let insertHTML ='';
       messages.forEach(function (message) {
       insertHTML = buildMessage(message);
       $('.messages').append(insertHTML); 
         })
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      end
+      }
       })
+
     .fail(function() {
       alert('更新に失敗しました');
     });
    }
   };
   setInterval(reloadMessages, 5000);
-
 });
 

@@ -74,3 +74,8 @@ gem 'carrierwave'
 # carrierwaveを入れる時に導入するgem（画像のリサイズなどのためです）
 gem 'mini_magick'
 
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
+
