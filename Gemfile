@@ -59,6 +59,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # 画像送信用のgem（あくまで画像アップロードのみのgem）
+  gem 'carrierwave'
+  gem 'fog-aws'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -75,8 +78,7 @@ gem 'font-awesome-rails'
 
 gem 'devise'
 
-# 画像送信用のgem（あくまで画像アップロードのみのgem）
-gem 'carrierwave'
+
 # carrierwaveを入れる時に導入するgem（画像のリサイズなどのためです）
 gem 'mini_magick'
 
